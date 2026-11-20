@@ -1,0 +1,18 @@
+# Python 3.12 / CUDA 12.8 (RTX 3090, driver CUDA 13.3)
+# インストール: uv pip install --python .venv_pytorch/bin/python --extra-index-url https://download.pytorch.org/whl/cu128 -r requirements_pytorch.txt
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+numpy==2.5.4
+pillow==13.0.0
+scikit-image==0.26.0
+scipy==1.18.1
+matplotlib==3.11.2
+pandas==3.1.1
+tqdm==4.70.1
+constriction==0.5.0
+pyyaml==6.0.3
+pytest==9.2.0
+ipykernel==7.4.0
+jupyter==1.1.1
+nbconvert==7.17.2
