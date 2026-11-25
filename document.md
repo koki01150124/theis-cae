@@ -117,3 +117,17 @@ nohup setsid .venv_pytorch/bin/python programs/ex001_kodak_cae/train.py > output
 `datasets/`，`outputs/`，`.venv_*` は `.gitignore` により管理対象外である．
 学習済みモデル（`*.pth`）を Git で管理する場合は Git LFS を用いる．
 `.ai/` 以下はサブモジュールであり，本実験では変更しない．
+
+## 発表スライド（order_002）
+
+`theis_cae_reproduction.pptx` は order_001 の結果をまとめたゼミ発表用のスライド（21 枚，15 分程度を想定）であり，`theis_cae_reproduction.pdf` はその PDF 版である．
+スライドは `programs/slides/build_cae_slides.py` がテンプレート `.ai/ai-pptx-kit/templates/research.pptx` から生成し，数式は PowerPoint のネイティブ数式（OMML）として挿入する．
+スライド用の図は `programs/ex001_kodak_cae/plot_slide_figures.py` が `outputs/ex001_kodak_cae/figures/slides/` に出力する．
+
+```bash
+.venv_pytorch/bin/python programs/ex001_kodak_cae/plot_slide_figures.py
+uv venv .ai/pptx-render/.venv_render --python 3.10
+uv pip install --python .ai/pptx-render/.venv_render/bin/python -r .ai/pptx-render/requirements_render.txt latex2mathml mathml2omml
+.ai/pptx-render/.venv_render/bin/python programs/slides/build_cae_slides.py
+PYTHONPATH=.ai/pptx-render/programs .ai/pptx-render/.venv_render/bin/python -m pptx_renderer.cli theis_cae_reproduction.pptx -o theis_cae_reproduction.pdf
+```
