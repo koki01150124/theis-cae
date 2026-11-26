@@ -184,6 +184,7 @@ def reconstructions(image="kodim04", target=0.375, box=(150, 190, 470, 430)):
             "jpeg": {"bpp": jpg_bpp, "psnr": psnr(orig, jpg)}, "jpeg2000": {"bpp": jp2_bpp, "psnr": psnr(orig, jp2)}}
     for name, img in [("original", orig), ("cae", cae), ("jpeg", jpg), ("jpeg2000", jp2)]:
         Image.fromarray(img).crop(box).save(os.path.join(OUT, f"recon_{name}.png"))
+        Image.fromarray(img).save(os.path.join(OUT, f"recon_full_{name}.png"))
     with open(os.path.join(OUT, "recon_info.json"), "w") as f:
         json.dump(info, f, indent=2)
     print(info)
